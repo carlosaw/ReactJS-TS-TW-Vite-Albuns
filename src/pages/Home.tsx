@@ -12,28 +12,27 @@ export const Home = () => {
     loadAlbums();
   }, []);
 
-  const loadAlbums = async () => {    
-    setLoading(true);    
+  const loadAlbums = async () => {           
     const albums = await api.getAlbums();
-    setInterval(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setList(albums);
       setLoading(false);
-  }, 2500);
-    setList(albums);
-    setLoading(false);
+    }, 2000);   
   }
 
   return (
     <>
-    <div>
+      <div className='flex justify-center items-center'>
+        {loading &&
+          <img src={ProgressBar} alt='0' width={200}/>
+        }
+      </div>
 
-      {loading &&
-        <img src={ProgressBar} alt='' width={150} />
-      }
-</div>
       {list.map((item, index) => (
         <div className='p-2'>
           <AlbumItem
-            key={index.toString()}
+            key={index}
             id={item.id}
             title={item.title}
           />
