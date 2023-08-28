@@ -18,7 +18,7 @@ export const Home = () => {
     setTimeout(() => {
       setList(albums);
       setLoading(false);
-    }, 2000);   
+    }, 2500);   
   }
 
   return (

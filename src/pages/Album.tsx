@@ -9,7 +9,6 @@ import ProgressBar from '../assets/progress-bar.gif';
 export const Album = () => {
   const params = useParams();
   const navigate = useNavigate();
-
   const [loading, setLoading] = useState(false);
   const [list, setList] = useState<Photo[]>([]);
   const [albumInfo, setAlbumInfo] = useState<AlbumType>({ id: 0, title: '', userId: 0 });
@@ -24,8 +23,11 @@ export const Album = () => {
   const loadPhotos = async (id: string) => {
     setLoading(true);
     const photos = await api.getPhotosFromAlbum(id);
-    setList(photos);
-    setLoading(false);
+    setTimeout(() => {
+      setList(photos);
+      setLoading(false);
+    }, 2000);
+    
   }
 
   const loadAlbumInfo = async (id: string) => {
@@ -38,16 +40,23 @@ export const Album = () => {
   }
 
   return (
-    <div className='flex flex-col '>
-              
+    <>
+      <div className='flex justify-center items-center'>
         {loading &&
-          <img src={ProgressBar} alt='' width={150} />
+          <img src={ProgressBar} alt='0' width={200}/>
         }
-        <button onClick={handleBackButton}>Voltar</button>
-        <div>
-          <h1 className='flex 1'>{albumInfo.title}</h1>
-        </div>
+      </div>
+      {!loading &&
+        <div className='flex flex-col '>
+        <div className='mt-4 text-center'> 
+          <button onClick={handleBackButton} className='bg-cyan-600
+          text-white'>...Voltar</button>
+        </div>              
         
+        <div className='flex justify-center items-center mt-2 mb-6'>
+          <h1 className=''>{albumInfo.title}</h1>
+        </div>
+          
         <div className='grid grid-cols-5 gap-4'>
           {list.map((item, index) => (
             <PhotoItem
@@ -56,7 +65,11 @@ export const Album = () => {
             />
           ))}
         </div>
-    </div>
+      </div>
+      } 
+    
+    </>
+    
 
   );
 }
