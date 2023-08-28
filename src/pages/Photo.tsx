@@ -29,11 +29,11 @@ export const Photo = () => {
         <>
           <div className='mt-4 text-center'> 
             <button onClick={handleBackButton} className='bg-cyan-600
-            text-white'>...Voltar</button>
+            text-white text-lg'>...Voltar</button>
           </div>
 
           <div className='flex flex-col justify-center items-center mt-4'>
-            <p className='mb-4'>{photoInfo.title}</p>
+            <p className='mb-4 text-xl'>{photoInfo.title}</p>
             <div>
               <img src={photoInfo.url} alt={photoInfo.title} />
             </div>          
