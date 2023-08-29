@@ -8,6 +8,8 @@ export const Home = () => {
   const [loading, setLoading] = useState(false);
   const [list, setList] = useState<Album[]>([]);
 
+  
+
   useEffect(() => {
     loadAlbums();
   }, []);
@@ -23,21 +25,22 @@ export const Home = () => {
 
   return (
     <>
-      <div className='flex justify-center items-center'>
+      <div className='flex justify-center items-center'>      
         {loading &&
           <img src={ProgressBar} alt='0' width={200}/>
         }
       </div>
-
-      {list.map((item, index) => (
-        <div className='p-2'>
-          <AlbumItem
-            key={index}
-            id={item.id}
-            title={item.title}
-          />
-        </div>
-      ))}
-   </> 
+      <div className='p-2 flex flex-col w-full'>
+        {list.map((item, index) => (        
+          <div className='mb-2'>
+            <AlbumItem
+              key={index}
+              id={item.id}
+              title={item.title}
+            /> 
+          </div>                 
+        ))}      
+      </div>
+    </>     
   );
 }

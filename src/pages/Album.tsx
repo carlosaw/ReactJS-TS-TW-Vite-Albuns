@@ -48,24 +48,24 @@ export const Album = () => {
       </div>
       {!loading &&
         <div className='flex flex-col '>
-        <div className='mt-4 text-center'> 
-          <button onClick={handleBackButton} className='bg-cyan-600
-          text-white'>...Voltar</button>
-        </div>              
-        
-        <div className='flex justify-center items-center mt-2 mb-6'>
-          <h1 className=''>{albumInfo.title}</h1>
-        </div>
+          <div className='mt-4 text-center hover:scale-105 transition duration-150 ease-out hover:ease-in'> 
+            <button onClick={handleBackButton} className='bg-cyan-600
+            text-white'>...Voltar</button>
+          </div>              
           
-        <div className='grid grid-cols-5 gap-4'>
-          {list.map((item, index) => (
-            <PhotoItem
-              key={index}
-              data={item}
-            />
-          ))}
+          <div className='flex justify-center items-center mt-2 mb-6'>
+            <h1 className=''>{albumInfo.title}</h1>
+          </div>
+            
+          <div className='grid grid-cols-5 gap-4'>
+            {list.map((item, index) => (
+              <PhotoItem
+                key={index}
+                data={item}
+              />
+            ))}
+          </div>
         </div>
-      </div>
       } 
     
     </>

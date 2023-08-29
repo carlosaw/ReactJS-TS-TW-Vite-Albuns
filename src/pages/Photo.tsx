@@ -27,9 +27,9 @@ export const Photo = () => {
     <div>
       {photoInfo &&
         <>
-          <div className='mt-4 text-center'> 
+          <div className='mt-4 text-center hover:scale-105 transition duration-150 ease-out hover:ease-in'> 
             <button onClick={handleBackButton} className='bg-cyan-600
-            text-white text-lg'>...Voltar</button>
+            text-white'>...Voltar</button>
           </div>
 
           <div className='flex flex-col justify-center items-center mt-4'>
