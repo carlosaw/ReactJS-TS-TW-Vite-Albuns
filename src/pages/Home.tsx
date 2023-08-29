@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { AlbumItem } from '../components/AlbumItem';
+import { Loading } from '../components/Loading';
 import { Album } from '../types/Album';
-import ProgressBar from '../assets/progress-bar.gif';
+//import ProgressBar from '../assets/progress-bar.gif';
+import Camera from '../assets/camera-removebg.png';
 
 export const Home = () => {
   const [loading, setLoading] = useState(false);
   const [list, setList] = useState<Album[]>([]);
-
-  
 
   useEffect(() => {
     loadAlbums();
@@ -25,22 +25,31 @@ export const Home = () => {
 
   return (
     <>
-      <div className='flex justify-center items-center'>      
-        {loading &&
-          <img src={ProgressBar} alt='0' width={200}/>
+    {loading &&
+      <Loading/>
+    }    
+      
+      <div className='container mx-auto max-w-screen-lg'>
+        {!loading &&        
+          <>
+            <div className='h-30 flex justify-around items-center bg-blue-500 rounded-md'>
+              <h1 className='text-white'>Galeria de fotos</h1>
+              <img src={Camera} alt='' width={200} />        
+            </div>
+            <div className='p-2 flex flex-col w-full'>
+              {list.map((item, index) => (        
+                <div className='mb-2'>
+                  <AlbumItem
+                    key={index}
+                    id={item.id}
+                    title={item.title}
+                  /> 
+                </div>                 
+              ))}      
+            </div>
+          </>   
         }
-      </div>
-      <div className='p-2 flex flex-col w-full'>
-        {list.map((item, index) => (        
-          <div className='mb-2'>
-            <AlbumItem
-              key={index}
-              id={item.id}
-              title={item.title}
-            /> 
-          </div>                 
-        ))}      
-      </div>
+      </div>      
     </>     
   );
 }
