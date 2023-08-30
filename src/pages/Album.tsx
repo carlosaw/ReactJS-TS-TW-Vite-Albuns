@@ -5,11 +5,11 @@ import { Photo } from '../types/Photo';
 import { Album as AlbumType } from '../types/Album';
 import { PhotoItem } from '../components/PhotoItem';
 import { Loading } from '../components/Loading';
-import Camera from '../assets/camera-removebg.png';
+import { Header } from '../components/Header';
+import { BackButton } from '../components/BackButton';
 
 export const Album = () => {
   const params = useParams();
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [list, setList] = useState<Photo[]>([]);
   const [albumInfo, setAlbumInfo] = useState<AlbumType>({ id: 0, title: '', userId: 0 });
@@ -28,7 +28,6 @@ export const Album = () => {
       setList(photos);
       setLoading(false);
     }, 2000);
-
   }
 
   const loadAlbumInfo = async (id: string) => {
@@ -36,9 +35,7 @@ export const Album = () => {
     setAlbumInfo(albumInfo);
   }
 
-  const handleBackButton = () => {
-    navigate(-1);
-  }
+  
 
   return (
     <>
@@ -49,15 +46,9 @@ export const Album = () => {
       </div>
       {!loading &&
         <>
-          <div className='h-30 flex justify-around items-center bg-blue-500 rounded-md'>
-            <h1 className='text-white'>Galeria de fotos</h1>
-            <img src={Camera} alt='' width={200} />
-          </div>
+          <Header />
           <div className='flex flex-col '>
-            <div className='mt-4 text-center hover:scale-105 transition duration-150 ease-out hover:ease-in'>
-              <button onClick={handleBackButton} className='bg-cyan-600
-              text-white'>...Voltar</button>
-            </div>
+            <BackButton />
             <div className='flex justify-center items-center mt-2 mb-6'>
               <h1 className=''>{albumInfo.title}</h1>
             </div>

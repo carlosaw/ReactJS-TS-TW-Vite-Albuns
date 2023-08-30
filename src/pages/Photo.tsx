@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { api } from '../api';
 import { Photo as PhotoType } from '../types/Photo';
-import Camera from '../assets/camera-removebg.png';
 import { Loading } from '../components/Loading';
+import { Header } from '../components/Header';
+import { BackButton } from '../components/BackButton';
 
 export const Photo = () => {
   const params = useParams();
@@ -26,10 +27,6 @@ export const Photo = () => {
     }, 2000);
   }
 
-  const handleBackButton = () => {
-    navigate(-1);
-  }
-
   return (
     <>
       <div className='flex justify-center items-center'>
@@ -40,16 +37,10 @@ export const Photo = () => {
 
       {!loading &&
         <div>
-          <div className='h-30 flex justify-around items-center bg-blue-500 rounded-md'>
-            <h1 className='text-white'>Galeria de fotos</h1>
-            <img src={Camera} alt='' width={200} />
-          </div>          
+          <Header />
+          <BackButton />          
           {photoInfo &&
             <>
-              <div className='mt-4 text-center hover:scale-105 transition duration-150 ease-out hover:ease-in'>
-                <button onClick={handleBackButton} className='bg-cyan-600
-            text-white'>...Voltar</button>
-              </div>
               <div className='flex flex-col justify-center items-center mt-4'>
                 <p className='mb-4 text-xl'>{photoInfo.title}</p>
                 <div>

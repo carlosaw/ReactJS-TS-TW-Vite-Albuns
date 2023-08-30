@@ -3,8 +3,7 @@ import { api } from '../api';
 import { AlbumItem } from '../components/AlbumItem';
 import { Loading } from '../components/Loading';
 import { Album } from '../types/Album';
-//import ProgressBar from '../assets/progress-bar.gif';
-import Camera from '../assets/camera-removebg.png';
+import { Header } from '../components/Header';
 
 export const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -20,7 +19,7 @@ export const Home = () => {
     setTimeout(() => {
       setList(albums);
       setLoading(false);
-    }, 2500);   
+    }, 2000);   
   }
 
   return (
@@ -32,15 +31,12 @@ export const Home = () => {
       <div className='container mx-auto max-w-screen-lg'>
         {!loading &&        
           <>
-            <div className='h-30 flex justify-around items-center bg-blue-500 rounded-md'>
-              <h1 className='text-white'>Galeria de fotos</h1>
-              <img src={Camera} alt='' width={200} />        
-            </div>
+            <Header />
             <div className='p-2 flex flex-col w-full'>
               {list.map((item, index) => (        
                 <div className='mb-2'>
                   <AlbumItem
-                    key={index}
+                    key={index.toString()}
                     id={item.id}
                     title={item.title}
                   /> 
