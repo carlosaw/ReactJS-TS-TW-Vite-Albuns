@@ -3,7 +3,7 @@ import { api } from '../api';
 import { AlbumItem } from '../components/AlbumItem';
 import { Loading } from '../components/Loading';
 import { Album } from '../types/Album';
-import { Header } from '../components/Header';
+import { Header } from '../components/Header'; 
 
 export const Home = () => {
   const [loading, setLoading] = useState(false);
