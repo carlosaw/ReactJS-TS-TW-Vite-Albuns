@@ -1,21 +1,11 @@
-# Vite + ReactJS + typescript + tailwind
-Projeto realizado no curso de ReactJS
-
-## Instalation
+### Instalation
 - `npm install`
 
-## Run project
+### Run project
 - ` npm run dev`
 
-# Vite + ReactJS + typescript + tailwind
-Projeto realizado no curso de ReactJS
-
-## Instalation
-- `npm install`
-
-## Run project
-- ` npm run dev`
-
+### Land Page
+[]()
 Este modelo fornece uma configuração mínima para fazer o React funcionar no Vite com HMR e algumas regras ESLint.
 
 Atualmente, dois plugins oficiais estão disponíveis:
