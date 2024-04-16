@@ -5,7 +5,7 @@
 - ` npm run dev`
 
 ### Land Page
-[]()
+[vercel](https://react-js-ts-tw-vite-albuns.vercel.app/)
 Este modelo fornece uma configuração mínima para fazer o React funcionar no Vite com HMR e algumas regras ESLint.
 
 Atualmente, dois plugins oficiais estão disponíveis:
